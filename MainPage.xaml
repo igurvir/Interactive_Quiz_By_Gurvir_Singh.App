@@ -10,10 +10,10 @@
             <Label Text="{Binding CurrentQuestion.QuestionText}" FontSize="{OnPlatform iOS='Medium', Android='Medium', WinUI='Small'}" Margin="{OnPlatform iOS='0,30,0,20', Android='0,10,0,20', WinUI='0,10,0,20'}"/>
         </StackLayout>
         <HorizontalStackLayout HorizontalOptions="Center" >
-            <Button Text="{Binding Option1} " Command="{Binding Option1Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="LightGray" TextColor="Black"/>
-            <Button Text="{Binding Option2} " Command="{Binding Option2Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="LightGray" TextColor="Black"/>
-            <Button Text="{Binding Option3} " Command="{Binding Option3Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="LightGray" TextColor="Black" IsVisible="{Binding buttonDisable}" />
-            <Button Text="{Binding Option4} " Command="{Binding Option4Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="LightGray" TextColor="Black" IsVisible="{Binding buttonDisable}" />
+            <Button Text="{Binding Option1} " Command="{Binding Option1Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="{Binding color1}" TextColor="Black" IsEnabled="{Binding isEnabled}"/>
+            <Button Text="{Binding Option2} " Command="{Binding Option2Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="{Binding color2}" TextColor="Black" IsEnabled="{Binding isEnabled}"/>
+            <Button Text="{Binding Option3} " Command="{Binding Option3Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="{Binding color3}" TextColor="Black" IsVisible="{Binding buttonDisable}" IsEnabled="{Binding isEnabled}" />
+            <Button Text="{Binding Option4} " Command="{Binding Option4Command}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="{Binding color4}" TextColor="Black" IsVisible="{Binding buttonDisable}" IsEnabled="{Binding isEnabled}"/>
         </HorizontalStackLayout>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="Next" Command="{Binding NextQuestionCommand}" Margin="{OnPlatform iOS='0,20,0,0', Android='0,20,0,0', WinUI='0,20,0,0'}" BackgroundColor="LightGray" TextColor="Black"  />
