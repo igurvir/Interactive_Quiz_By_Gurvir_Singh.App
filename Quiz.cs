@@ -41,43 +41,43 @@ namespace Interactive_Quiz_By_Gurvir_Singh
                 },
                 new MultipleChoiceQuestion
                 {
-                    QuestionText = "What should a Javanese couple do in order to get married?",
+                    QuestionText = "Which is capital of Pero?",
                     Points = 5,
-                    CorrectAnswer = "Plant 5 trees",
-                    Option1 = "Plant 5 trees",
-                    Option2 = "ree 5 birds",
-                    Option3 = "Free 5 animals",
-                    Option4 = "Visit 5 countries"
+                    CorrectAnswer = "Lima",
+                    Option1 = "Kingston",
+                    Option2 = "Lima",
+                    Option3 = "Tirana",
+                    Option4 = "Yerevan"
                 },
                 new MultipleChoiceQuestion
                 {
-                    QuestionText = "Baigue is a type of which sport popular among Turkish people?",
+                    QuestionText = "What is the Capital of East Timor?",
                     Points = 5,
-                    CorrectAnswer = "Volleyball",
-                    Option1 = "Volleyball",
-                    Option2 = "Cycling",
-                    Option3 = "Martial Art",
-                    Option4 = "Horse racing"
+                    CorrectAnswer = "Dili",
+                    Option1 = "Dili",
+                    Option2 = "Ottawa",
+                    Option3 = "Seoul",
+                    Option4 = "Bangkok"
                 },
                 new MultipleChoiceQuestion
                 {
-                    QuestionText = "Which mountain range gets its name from the Sanskrit language meaning ‘abode of snow’?",
+                    QuestionText = "The Capital of Irealand is?",
                     Points = 5,
-                    CorrectAnswer = "Himalayas",
-                    Option1 = "Karakoram",
-                    Option2 = "Hindukush",
-                    Option3 = "Ural",
-                    Option4 = "Himalayas"
+                    CorrectAnswer = "Dublin",
+                    Option1 = "Asmara",
+                    Option2 = "Banjul",
+                    Option3 = "Paris",
+                    Option4 = "Dublin"
                 },
                 new MultipleChoiceQuestion
                 {
-                    QuestionText = "Which singer made the “Moonwalk” dance famous?",
+                    QuestionText = "Windhoek is the capital of?",
                     Points = 5,
-                    CorrectAnswer = "Michael Jackson",
-                    Option1 = "James Brown",
-                    Option2 = "Elvis Presley",
-                    Option3 = "Michael Jackson",
-                    Option4 = "Justin Bieber"
+                    CorrectAnswer = "Namibia",
+                    Option1 = "Namibia",
+                    Option2 = "Niger",
+                    Option3 = "Chad",
+                    Option4 = "Ghana"
                 },
                 new TrueFalseQuestion
                 {
@@ -152,7 +152,7 @@ namespace Interactive_Quiz_By_Gurvir_Singh
                     Option3 = mcq.Option3,
                     Option4 = mcq.Option4,
                 };
-                Title = "Multiple Choise Question";
+                Title = "MCQs";
                 return newQuestion;
             }
             else if (question is TrueFalseQuestion tfq)
@@ -164,7 +164,7 @@ namespace Interactive_Quiz_By_Gurvir_Singh
                     Option1 = "true",
                     Option2 = "false",
                 };
-                Title = "True/False Question";
+                Title = "True/False";
                 return newQuestion;
             }
             else

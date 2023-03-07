@@ -24,7 +24,6 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         private bool _isEnabled = true;
         private bool _isSubmited = true;
         private bool _resultLabl = false;
-        private string _quizAction = string.Empty;
         private string _result = string.Empty;
         public QuizViewModel()
         {
@@ -39,25 +38,6 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         public string Title
         {
             get { return _quiz.Title; }
-        }
-        public string Option1
-        {
-            get { return CurrentQuestion.Option1; }
-        }
-
-        public string Option2
-        {
-            get { return CurrentQuestion.Option2; }
-        }
-
-        public string Option3
-        {
-            get { return CurrentQuestion.Option3; }
-        }
-
-        public string Option4
-        {
-            get { return CurrentQuestion.Option4; }
         }
         public bool buttonDisable
         {
@@ -74,10 +54,6 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         public bool resultLabl
         {
             get { return _resultLabl; }
-        }
-        public string QuizAction
-        {
-            get { return _quizAction; }
         }
         public string Result
         {
@@ -145,7 +121,7 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         }
         public void Option2_Clicked()
         {
-            if (_quiz.CheckAnswer(CurrentQuestion.Option1))
+            if (_quiz.CheckAnswer(CurrentQuestion.Option2))
             {
                 _color2 = Colors.Green;
             }
@@ -159,7 +135,7 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         }
         public void Option3_Clicked()
         {
-            if (_quiz.CheckAnswer(CurrentQuestion.Option1))
+            if (_quiz.CheckAnswer(CurrentQuestion.Option3))
             {
                 _color3 = Colors.Green;
             }
@@ -173,7 +149,7 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         }
         public void Option4_Clicked()
         {
-            if (_quiz.CheckAnswer(CurrentQuestion.Option1))
+            if (_quiz.CheckAnswer(CurrentQuestion.Option4))
             {
                 _color4 = Colors.Green;
             }
@@ -197,27 +173,19 @@ namespace Interactive_Quiz_By_Gurvir_Singh
                 _resultLabl = true;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("resultLabl"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Result"));
-                _quizAction = "You Have Completed the Quiz!";
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("QuizAction"));
             }
             ResetColor();
             _isEnabled = true;
             NotifyPropertyChanged(nameof(CurrentQuestion));
             if (string.IsNullOrEmpty(CurrentQuestion.Option3) && string.IsNullOrEmpty(CurrentQuestion.Option4))
             {
-                _quiz.Title = "True/False Question";
+                _quiz.Title = "True/False";
 
             }
             else
             {
-                _quiz.Title = "Multiple Choice Question Question";
+                _quiz.Title = "MCQs";
             }
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("QuestionText"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Option1"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Option2"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Option3"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Option4"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("buttonDisable"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("color1"));
@@ -236,8 +204,6 @@ namespace Interactive_Quiz_By_Gurvir_Singh
             _quiz._currentQuestion = new MultipleChoiceQuestion();
             _resultLabl = true;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("resultLabl"));
-            _quizAction = "You Have Quit the Quiz!";
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("QuizAction"));
         }
         public void ResetColor()
         {
