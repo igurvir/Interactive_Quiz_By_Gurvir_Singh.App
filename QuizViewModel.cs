@@ -22,6 +22,10 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         private Color _color3 = Colors.LightGray;
         private Color _color4 = Colors.LightGray;
         private bool _isEnabled = true;
+        private bool _isSubmited = true;
+        private bool _resultLabl = false;
+        private string _quizAction = string.Empty;
+        private string _result = string.Empty;
         public QuizViewModel()
         {
             _quiz = new Quiz();
@@ -62,6 +66,22 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         public bool isEnabled
         {
             get { return _isEnabled; }
+        }
+        public bool isSubmited
+        {
+            get { return _isSubmited; }
+        }
+        public bool resultLabl
+        {
+            get { return _resultLabl; }
+        }
+        public string QuizAction
+        {
+            get { return _quizAction; }
+        }
+        public string Result
+        {
+            get { return _result; }
         }
         public Color color1
         {
@@ -168,6 +188,18 @@ namespace Interactive_Quiz_By_Gurvir_Singh
         private void NextQuestion()
         {
             _quiz._currentQuestion = _quiz.GetNextQuestion();
+            if (_quiz._currentQuestion == null)
+            {
+                _result=  "You got " + _quiz.CorrectCount + " correct answers out of " + _quiz._UserquestionCount;
+                _isSubmited = false;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("isSubmited"));
+                _quiz._currentQuestion = new MultipleChoiceQuestion();
+                _resultLabl = true;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("resultLabl"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Result"));
+                _quizAction = "You Have Completed the Quiz!";
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("QuizAction"));
+            }
             ResetColor();
             _isEnabled = true;
             NotifyPropertyChanged(nameof(CurrentQuestion));
@@ -193,10 +225,19 @@ namespace Interactive_Quiz_By_Gurvir_Singh
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("color3"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("color4"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("isEnabled"));
+
         }
-        private async void QuitQuiz()
+        private void QuitQuiz()
         {
-            await Application.Current.MainPage.DisplayAlert("Result", "You got " + _quiz.CorrectCount + " correct answers out of " + _quiz._UserquestionCount + "", "OK");
+            _result = "You got " + _quiz.CorrectCount + " correct answers out of " + _quiz._UserquestionCount;
+            _isSubmited = false;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Result"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("isSubmited"));
+            _quiz._currentQuestion = new MultipleChoiceQuestion();
+            _resultLabl = true;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("resultLabl"));
+            _quizAction = "You Have Quit the Quiz!";
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("QuizAction"));
         }
         public void ResetColor()
         {
